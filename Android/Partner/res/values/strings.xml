@@ -3,6 +3,12 @@
 
     <string name="app_name">合伙人</string>
     <string name="register">注册</string>
+    <string name="account">账号</string>
+    <string name="phone_number">手机号</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="security">验证码</string>
+    <string name="security_input">a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>

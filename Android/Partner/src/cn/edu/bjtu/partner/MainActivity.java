@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
 			intent.setClass(this, LoginActivity.class);
 		}
 		startActivity(intent);
+		finish();
 	}
 
 }
