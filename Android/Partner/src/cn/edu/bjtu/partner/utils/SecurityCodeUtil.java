@@ -8,13 +8,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+/**
+ * @author Tans
+ */
 public class SecurityCodeUtil {
 
 	private static final char[] CHARS = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
-			'h', 'i', 'j', 'k', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-			'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
-			'H', 'J', 'K', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-			'U', 'V', 'W', 'X', 'Y', 'Z' };
+			'h', 'i', 'j', 'k', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+			'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+			'J', 'K', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+			'X', 'Y', 'Z' };
 
 	private static SecurityCodeUtil bpUtil;
 
@@ -117,8 +120,10 @@ public class SecurityCodeUtil {
 	}
 
 	private void randomPadding() {
-		padding_left += base_padding_left + random.nextInt(range_padding_left);
-		padding_top = base_padding_top + random.nextInt(range_padding_top);
+		padding_left += base_padding_left + 5;
+		// + random.nextInt(range_padding_left);
+		padding_top = base_padding_top + 5;
+		// + random.nextInt(range_padding_top);
 	}
 
 }

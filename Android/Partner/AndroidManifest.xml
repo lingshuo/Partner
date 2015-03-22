@@ -8,6 +8,8 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="cn.edu.bjtu.partner.PartnerApp"
         android:allowBackup="true"
@@ -24,8 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name="cn.edu.bjtu.partner.activity.PartnerManagerActivity" />
+        <activity android:name="cn.edu.bjtu.partner.activity.PartnerActivity" />
         <activity android:name="cn.edu.bjtu.partner.activity.LoginActivity" />
         <activity android:name="cn.edu.bjtu.partner.activity.RegisterActivity" />
+        <activity android:name="cn.edu.bjtu.partner.activity.FindPasswordActivity" />
     </application>
 
 </manifest>

@@ -3,18 +3,48 @@
 
     <string name="app_name">合伙人</string>
     <string name="register">注册</string>
+    <string name="register_partner_account"><u>注册超级合伙人账号</u></string>
+    <string name="know_partner">了解合伙人</string>
     <string name="account">账号</string>
     <string name="phone_number">手机号</string>
     <string name="password">密码</string>
+    <string name="phone_security">短信验证码</string>
+    <string name="get_phone_security">获取短信验证码</string>
+    <string name="next_step">下一步</string>
+    <string name="register_password">密码(6到20位)</string>
+    <string name="password_again">再输入一次密码</string>
+    <string name="invitation_code">邀请码</string>
+    <string name="edittext_input_digits">0123456789</string>
+    <string name="edittext_input_small_letter">abcdefghijklmnopqrstuvwxyz</string>
+    <string name="edittext_input_digits_letter">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="login">登录</string>
     <string name="security">验证码</string>
-    <string name="security_input">a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">我自己</string>
+    <string name="title_section2">合伙人</string>
+    <string name="title_section3">邀请</string>
+    <string name="set_custom_invite">设置自定义邀请码:</string>
+    <string name="invitation_code_request">(1)邀请码为4到16位字母数字组合。\n(2)邀请码为一号一绑定制，一旦设置将不可更改。\n(3)请尽量使用易阅读字体(易区分0,o;1,l;v,u)。</string>
+    <string name="register_request">(1)账号为手机号。\n(2)密码为6到20位数字字母组合(可加_、/*等符号)。</string>
+    <string name="set">设置</string>
+    <string name="register_password_not_same">两次密码输入不一致</string>
+    <string name="register_password_too_short">密码太短(6到20位)</string>
+    <string name="register_phone_too_short">手机号不符合规则</string>
+    <string name="register_invite_not_null">邀请码不能为空</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="reset_password">重置密码</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+
+    <!-- partner主界面 -->
+    <string name="partner_head_id">会员ID:</string>
+    <string name="partner_head_name">昵称:</string>
+    <string name="partner_head_level">等级:</string>
+    <string name="partner_head_low_partner_num">下级合伙人数:</string>
+    <string name="partner_head_back_a">返还系数A项:</string>
+    <string name="partner_head_back_b">返还系数B项:</string>
+    <string name="partner_mid_hand_charge">手续费:</string>
+    <string name="partner_mid_cash_deposit">保证金</string>
 
 </resources>

@@ -18,7 +18,10 @@ public class MainActivity extends Activity {
 		PreferenceUtils.init(this);
 		Intent intent = new Intent();
 		// 根据登录状态进行跳转
-		if (PreferenceUtils.getLoginStatus()) {
+		if (
+		 PreferenceUtils.getLoginStatus()
+//		true
+		) {
 			intent.setClass(this, PartnerManagerActivity.class);
 		} else {
 			intent.setClass(this, LoginActivity.class);
