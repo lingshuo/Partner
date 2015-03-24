@@ -4,4 +4,13 @@
     <color name="white">#ffffffff</color>
     <color name="blue">#60aeee</color>
 
+    <!-- zxing二维码扫描 -->
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="sd_progress_bk">#1affffff</color>
+    <color name="sd_progress">#4cffffff</color>
+
 </resources>

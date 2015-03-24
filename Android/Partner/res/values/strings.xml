@@ -3,6 +3,7 @@
 
     <string name="app_name">合伙人</string>
     <string name="register">注册</string>
+    <string name="back">返回</string>
     <string name="register_partner_account"><u>注册超级合伙人账号</u></string>
     <string name="know_partner">了解合伙人</string>
     <string name="account">账号</string>

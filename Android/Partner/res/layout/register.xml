@@ -56,17 +56,31 @@
             android:maxLength="20"
             android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/regist_invite_code"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="@string/edittext_input_digits_letter"
-            android:drawableLeft="@drawable/register_invite_icon"
-            android:drawableRight="@drawable/register_qrcode"
-            android:hint="@string/invitation_code"
-            android:inputType="textVisiblePassword"
-            android:maxLength="16"
-            android:singleLine="true" />
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/regist_invite_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="@string/edittext_input_digits_letter"
+                android:drawableLeft="@drawable/register_invite_icon"
+                android:drawableRight="@drawable/register_qrcode"
+                android:hint="@string/invitation_code"
+                android:inputType="textVisiblePassword"
+                android:maxLength="16"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/qrbtn"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/regist_invite_code"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/regist_invite_code"
+                android:background="#00000000" />
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"

@@ -1,9 +1,8 @@
 package cn.edu.bjtu.partner.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -22,6 +21,7 @@ public class RegisterActivity extends Activity implements OnClickListener,
 	private EditText mPasswordAgainEditText;
 	private EditText mRegistInviteEditText;
 	private Button mRegistBtn;
+	private Button mQrBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,8 @@ public class RegisterActivity extends Activity implements OnClickListener,
 		mRegistInviteEditText = (EditText) findViewById(R.id.regist_invite_code);
 		mRegistBtn = (Button) findViewById(R.id.regist_btn);
 		mRegistBtn.setOnClickListener(this);
+		mQrBtn = (Button) findViewById(R.id.qrbtn);
+		mQrBtn.setOnClickListener(this);
 	}
 
 	@Override
@@ -44,6 +46,10 @@ public class RegisterActivity extends Activity implements OnClickListener,
 					.toString(), mPasswordEditText.getText().toString(),
 					mPasswordAgainEditText.getText().toString(),
 					mRegistInviteEditText.getText().toString());
+			break;
+		case R.id.qrbtn:
+			Intent intent = new Intent(this, CaptureActivity.class);
+			startActivityForResult(intent, 1);
 			break;
 		}
 

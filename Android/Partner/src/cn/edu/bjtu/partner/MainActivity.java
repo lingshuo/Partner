@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import cn.edu.bjtu.partner.activity.LoginActivity;
 import cn.edu.bjtu.partner.activity.PartnerManagerActivity;
+import cn.edu.bjtu.partner.utils.DeviceInfo;
 import cn.edu.bjtu.partner.utils.PreferenceUtils;
 
 /**
@@ -15,12 +16,11 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		PreferenceUtils.init(this);
+		init();
 		Intent intent = new Intent();
 		// 根据登录状态进行跳转
-		if (
-		 PreferenceUtils.getLoginStatus()
-//		true
+		if (PreferenceUtils.getLoginStatus()
+		// true
 		) {
 			intent.setClass(this, PartnerManagerActivity.class);
 		} else {
@@ -28,6 +28,12 @@ public class MainActivity extends Activity {
 		}
 		startActivity(intent);
 		finish();
+	}
+
+	// 初始化方法
+	private void init() {
+		DeviceInfo.initScreenInfo(this);
+		PreferenceUtils.init(this);
 	}
 
 }
