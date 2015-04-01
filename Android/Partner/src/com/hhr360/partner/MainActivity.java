@@ -1,13 +1,12 @@
 package com.hhr360.partner;
 
-import com.hhr360.partner.activity.LoginActivity;
-import com.hhr360.partner.activity.PartnerManagerActivity;
-import com.hhr360.partner.utils.DeviceInfo;
-import com.hhr360.partner.utils.PreferenceUtils;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.hhr360.partner.activity.LoginActivity;
+import com.hhr360.partner.utils.DeviceInfo;
+import com.hhr360.partner.utils.PreferenceUtils;
 
 /**
  * @author Tans
@@ -23,7 +22,7 @@ public class MainActivity extends Activity {
 		if (PreferenceUtils.getLoginStatus()
 		// true
 		) {
-			intent.setClass(this, PartnerManagerActivity.class);
+//			intent.setClass(this, PartnerActivity.class);
 		} else {
 			intent.setClass(this, LoginActivity.class);
 		}
