@@ -3,6 +3,7 @@
 
     <color name="white">#ffffffff</color>
     <color name="blue">#60aeee</color>
+    <color name="grey">#cccccc</color>
 
     <!-- zxing二维码扫描 -->
     <color name="viewfinder_frame">#ff000000</color>

@@ -1,98 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical" >
+    android:background="@color/white" >
 
-    <ImageView
-        android:id="@+id/image"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_header" />
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/image"
-        android:orientation="vertical"
-        android:padding="10dp" >
-
-        <EditText
-            android:id="@+id/regist_tel"
+        <ImageView
+            android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/login_user_icon"
-            android:hint="@string/phone_number"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:singleLine="true" />
+            android:background="@drawable/login_header" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <EditText
-            android:id="@+id/regist_password"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/login_lock_icon"
-            android:hint="@string/register_password"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:singleLine="true" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <EditText
-            android:id="@+id/regist_password_again"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/login_lock_icon"
-            android:hint="@string/password_again"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:singleLine="true" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_below="@id/image"
+            android:orientation="vertical"
+            android:padding="10dp" >
 
             <EditText
-                android:id="@+id/regist_invite_code"
+                android:id="@+id/regist_tel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="@string/edittext_input_digits_letter"
-                android:drawableLeft="@drawable/register_invite_icon"
-                android:drawableRight="@drawable/register_qrcode"
-                android:hint="@string/invitation_code"
-                android:inputType="textVisiblePassword"
-                android:maxLength="16"
+                android:drawableLeft="@drawable/phone_icon"
+                android:hint="@string/phone_number"
+                android:inputType="phone"
+                android:maxLength="11"
                 android:singleLine="true" />
 
-            <Button
-                android:id="@+id/qrbtn"
-                android:layout_width="60dp"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/account_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/regist_invite_code"
-                android:layout_alignParentRight="true"
-                android:layout_alignTop="@id/regist_invite_code"
-                android:background="#00000000" />
-        </RelativeLayout>
+                android:drawableLeft="@drawable/login_user_icon"
+                android:hint="@string/register_account"
+                android:maxLength="10"
+                android:singleLine="true" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
-        <Button
-            android:id="@+id/regist_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/loginbutton_background"
-            android:text="@string/register"
-            android:textColor="@color/white" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/regist_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/login_lock_icon"
+                android:hint="@string/register_password"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:singleLine="true" />
 
-</RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/regist_password_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/login_lock_icon"
+                android:hint="@string/password_again"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:singleLine="true" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/regist_invite_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/register_invite_icon"
+                    android:drawableRight="@drawable/register_qrcode"
+                    android:hint="@string/invitation_code"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/qrbtn"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/regist_invite_code"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/regist_invite_code"
+                    android:background="#00000000" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/regist_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/loginbutton_background"
+                android:text="@string/register"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

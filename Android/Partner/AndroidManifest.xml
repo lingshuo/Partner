@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.edu.bjtu.partner"
+    package="com.hhr360.partner"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,13 +12,13 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name="cn.edu.bjtu.partner.PartnerApp"
+        android:name="com.hhr360.partner.PartnerApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.hhr360.partner.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,15 +26,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.edu.bjtu.partner.activity.PartnerManagerActivity" />
-        <activity android:name="cn.edu.bjtu.partner.activity.PartnerActivity" />
-        <activity android:name="cn.edu.bjtu.partner.activity.LoginActivity" />
-        <activity android:name="cn.edu.bjtu.partner.activity.RegisterActivity" />
-        <activity android:name="cn.edu.bjtu.partner.activity.FindPasswordActivity" />
-        <activity android:name="cn.edu.bjtu.partner.activity.ResetPasswordActivity" />
+        <activity android:name="com.hhr360.partner.activity.PartnerManagerActivity" />
+        <activity android:name="com.hhr360.partner.activity.PartnerActivity" />
         <activity
-            android:name="cn.edu.bjtu.partner.activity.CaptureActivity"
+            android:name="com.hhr360.partner.activity.LoginActivity"
             android:launchMode="singleTask" />
+        <activity android:name="com.hhr360.partner.activity.RegisterActivity" />
+        <activity android:name="com.hhr360.partner.activity.FindPasswordActivity" />
+        <activity android:name="com.hhr360.partner.activity.ResetPasswordActivity" />
+        <activity android:name="com.hhr360.partner.activity.CaptureActivity" />
+        <activity android:name="com.hhr360.partner.activity.SubMyInviteActivity" />
+        <activity android:name="com.hhr360.partner.activity.SubMyPartnerActivity" />
+        <activity
+            android:name="com.hhr360.partner.activity.ResetPwdDialogActivity"
+            android:theme="@android:style/Theme.Dialog" />
     </application>
 
 </manifest>

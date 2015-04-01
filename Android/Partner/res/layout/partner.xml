@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:utils="http://schemas.android.com/apk/res/cn.edu.bjtu.partner"
+    xmlns:utils="http://schemas.android.com/apk/res/com.hhr360.partner"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
 
         <RelativeLayout
             android:id="@+id/top"
@@ -14,10 +15,10 @@
             android:layout_height="wrap_content"
             android:background="@drawable/partner_head_bg" >
 
-            <cn.edu.bjtu.partner.ui.utils.CustomImageView
+            <com.hhr360.partner.UIUtils.CustomImageView
                 android:id="@+id/head"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_margin="10dp"
                 utils:src="@drawable/header"
                 utils:type="circle" />
@@ -41,10 +42,10 @@
                         android:text="@string/partner_head_id" />
 
                     <TextView
+                        android:id="@+id/id"
                         style="@style/partner_textview_value"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dzq" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <View
@@ -63,10 +64,10 @@
                         android:text="@string/partner_head_name" />
 
                     <TextView
+                        android:id="@+id/account_name"
                         style="@style/partner_textview_value"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="董小球" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <View
@@ -123,10 +124,10 @@
                             android:text="@string/partner_head_low_partner_num" />
 
                         <TextView
+                            android:id="@+id/tv4"
                             style="@style/partner_textview_value"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="182" />
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                     <ImageView
@@ -158,10 +159,10 @@
                             android:text="@string/partner_head_back_a" />
 
                         <TextView
+                            android:id="@+id/tv5"
                             style="@style/partner_textview_value"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2%" />
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                     <ImageView
@@ -193,10 +194,10 @@
                             android:text="@string/partner_head_back_b" />
 
                         <TextView
+                            android:id="@+id/tv6"
                             style="@style/partner_textview_value"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="50%" />
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                     <ImageView
@@ -217,7 +218,7 @@
         <RelativeLayout
             android:id="@+id/middle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_below="@id/top" >
 
             <LinearLayout
@@ -227,22 +228,24 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:id="@+id/tv7"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="手续费:10000"
+                    android:text="日增收益:"
                     android:textColor="@color/white"
                     android:textSize="17sp" />
 
                 <TextView
+                    android:id="@+id/tv8"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="保证金:230303"
+                    android:text="保证金:"
                     android:textColor="@color/white"
                     android:textSize="17sp" />
             </LinearLayout>
@@ -255,6 +258,438 @@
                 android:layout_marginTop="5dp"
                 android:background="@color/white" />
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/middle"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rel01"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/invite_img"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner01" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/invite_img"
+                        android:text="@string/partner_my_invite" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel02"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img02"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner02" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img02"
+                        android:text="@string/partner_qr_scan" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel03"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img03"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner03" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img03"
+                        android:text="@string/partner_calc" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rel04"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img04"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner04" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img04"
+                        android:text="@string/partner_my_partner" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel05"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img05"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner05" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img05"
+                        android:text="@string/partner_my_profit" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel06"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img06"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner06" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img06"
+                        android:text="@string/partner_my_message" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rel07"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img07"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner07" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img07"
+                        android:text="@string/partner_report_statistic" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel08"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img08"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner08" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img08"
+                        android:text="@string/partner_rank" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel09"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img09"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner09" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img09"
+                        android:text="@string/partner_peizi_yewu" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rel10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img10"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img10"
+                        android:text="@string/partner_inout_money" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel11"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img11"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner11" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img11"
+                        android:text="@string/partner_help_course" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel12"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/partner_btn"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/img12"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner12" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img12"
+                        android:text="@string/partner_set" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rel13"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/img13"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/partner13" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img13"
+                        android:text="@string/partner_more_function" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
 
 </ScrollView>

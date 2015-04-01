@@ -13,6 +13,7 @@
     <string name="get_phone_security">获取短信验证码</string>
     <string name="next_step">下一步</string>
     <string name="register_password">密码(6到20位)</string>
+    <string name="register_account">用户名</string>
     <string name="password_again">再输入一次密码</string>
     <string name="invitation_code">邀请码</string>
     <string name="edittext_input_digits">0123456789</string>
@@ -33,6 +34,11 @@
     <string name="register_invite_not_null">邀请码不能为空</string>
     <string name="forget_password">忘记密码</string>
     <string name="reset_password">重置密码</string>
+    <string name="register_qr_failed">扫码失败</string>
+    <string name="login_success">登陆成功</string>
+    <string name="login_failed">登陆失败</string>
+    <string name="register_success">注册成功</string>
+    <string name="register_failed">注册失败</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -42,10 +48,26 @@
     <string name="partner_head_id">会员ID:</string>
     <string name="partner_head_name">昵称:</string>
     <string name="partner_head_level">等级:</string>
+    <string name="partner_invitation_code">邀请码:</string>
     <string name="partner_head_low_partner_num">下级合伙人数:</string>
     <string name="partner_head_back_a">返还系数A项:</string>
     <string name="partner_head_back_b">返还系数B项:</string>
     <string name="partner_mid_hand_charge">手续费:</string>
     <string name="partner_mid_cash_deposit">保证金</string>
+    <string name="partner_my_invite">我的邀请码</string>
+    <string name="partner_qr_scan">扫一扫</string>
+    <string name="partner_calc">计算器</string>
+    <string name="partner_my_partner">我的合伙人</string>
+    <string name="partner_my_profit">我的收益</string>
+    <string name="partner_my_message">我的消息</string>
+    <string name="partner_report_statistic">报表统计</string>
+    <string name="partner_rank">排名</string>
+    <string name="partner_peizi_yewu">配资业务</string>
+    <string name="partner_inout_money">入金出金</string>
+    <string name="partner_help_course">帮助教程</string>
+    <string name="partner_set">设置</string>
+    <string name="partner_more_function">更多功能，尽请期待</string>
+    <string name="sub_partner_my_use_invitation_code">直接使用邀请码或者扫描二维邀请码</string>
+    <string name="sub_partner_my_scan_qr">扫一下我的二维码，迅速成为超级合伙人</string>
 
 </resources>
