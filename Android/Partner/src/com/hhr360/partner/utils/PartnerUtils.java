@@ -5,6 +5,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import android.text.TextUtils;
+
 import com.hhr360.partner.PartnerApp;
 import com.hhr360.partner.bean.Partner;
 import com.hhr360.partner.observer.IPartnerObserver;
@@ -64,23 +66,26 @@ public class PartnerUtils {
 								.getString("account_name");
 						PartnerApp.PARTNER.setAccountName(accountName);
 						String statJson = jsonObj.getString("stat");
-						JSONObject statJonObj = new JSONObject(statJson);
-						PartnerApp.PARTNER.setHhrLevel(statJonObj
-								.getString("hhr_level"));
-						PartnerApp.PARTNER.setFirstlyPartnerNum(statJonObj
-								.getString("firstly_partner_num"));
-						PartnerApp.PARTNER.setSecondlyPartnerNum(statJonObj
-								.getString("secondary_partner_num"));
-						PartnerApp.PARTNER.setExtendPartnerNum(statJonObj
-								.getString("extend_person_new"));
-						PartnerApp.PARTNER.setInterestReturnCoefficient(statJonObj
-								.getString("interest_return_coefficient"));
-						PartnerApp.PARTNER.setChargeReturnCoefficient(statJonObj
-								.getString("charges_return_coefficient"));
-						PartnerApp.PARTNER.setDailyIncome(statJonObj
-								.getString("daily_income"));
-						PartnerApp.PARTNER.setMonthlyIncome(statJonObj
-								.getString("monthly_income"));
+						if(!TextUtils.isEmpty(statJson)&&!statJson.equals("null")){
+							
+							JSONObject statJonObj = new JSONObject(statJson);
+							PartnerApp.PARTNER.setHhrLevel(statJonObj
+									.getString("hhr_level"));
+							PartnerApp.PARTNER.setFirstlyPartnerNum(statJonObj
+									.getString("firstly_partner_num"));
+							PartnerApp.PARTNER.setSecondlyPartnerNum(statJonObj
+									.getString("secondary_partner_num"));
+							PartnerApp.PARTNER.setExtendPartnerNum(statJonObj
+									.getString("extend_person_new"));
+							PartnerApp.PARTNER.setInterestReturnCoefficient(statJonObj
+									.getString("interest_return_coefficient"));
+							PartnerApp.PARTNER.setChargeReturnCoefficient(statJonObj
+									.getString("charges_return_coefficient"));
+							PartnerApp.PARTNER.setDailyIncome(statJonObj
+									.getString("daily_income"));
+							PartnerApp.PARTNER.setMonthlyIncome(statJonObj
+									.getString("monthly_income"));
+						}
 						observer.IPartnerObserver_success();
 					} else {
 						observer.IPartnerObserver_failed("请求失败");

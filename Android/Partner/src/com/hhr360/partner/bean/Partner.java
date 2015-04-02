@@ -7,8 +7,8 @@ public class Partner {
 	private String invitationCode = "";
 	private String Phone = "";
 	private String hhrLevel = "";
-	private String firstlyPartnerNum = "";
-	private String secondlyPartnerNum = "";
+	private String firstlyPartnerNum = "0";
+	private String secondlyPartnerNum = "0";
 	private String extendPartnerNum = "";
 	private String interestReturnCoefficient = "";
 	private String chargeReturnCoefficient = "";

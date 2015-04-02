@@ -15,16 +15,18 @@ import com.hhr360.partner.observer.IResetPasswordObserver;
 import com.hhr360.partner.utils.RegistUtil;
 import com.hhr360.partner.utils.ResetPasswordUtil;
 
-
 public class ResetPasswordActivity extends BaseActivity implements
 		OnClickListener, IResetPasswordObserver {
 	private EditText mPasswordEditText;
 	private EditText mPasswordAgainEditText;
 	private Button mButton;
+	private String mPhone;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Intent intent = getIntent();
+		mPhone = intent.getStringExtra("phone");
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.reset_password);
 		setHeaderTextName(getResources().getString(R.string.reset_password));
@@ -34,10 +36,11 @@ public class ResetPasswordActivity extends BaseActivity implements
 		mButton.setOnClickListener(this);
 	}
 
-
 	@Override
 	public void IResetPasswordObserver_onSuccess(String msg) {
 		Intent intent = new Intent(this, ResetPwdDialogActivity.class);
+		intent.putExtra("phone", mPhone);
+		intent.putExtra("password", mPasswordEditText.getText().toString());
 		startActivity(intent);
 	}
 
@@ -53,9 +56,7 @@ public class ResetPasswordActivity extends BaseActivity implements
 			if (new RegistUtil().judgePasswordLegal(this, mPasswordEditText
 					.getText().toString(), mPasswordAgainEditText.getText()
 					.toString())) {
-				Intent intent = getIntent();
-				String phone = intent.getStringExtra("phone");
-				ResetPasswordUtil.resetPassword(this, phone, mPasswordEditText
+				ResetPasswordUtil.resetPassword(this, mPhone, mPasswordEditText
 						.getText().toString(), PartnerApp.PHONE_CODE);
 			}
 			break;

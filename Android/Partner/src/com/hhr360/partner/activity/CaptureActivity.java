@@ -24,7 +24,6 @@ import com.hhr360.partner.zxing.CameraManager;
 import com.hhr360.partner.zxing.CaptureActivityHandler;
 import com.hhr360.partner.zxing.ViewfinderView;
 
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
@@ -158,6 +157,7 @@ public class CaptureActivity extends Activity implements Callback {
 		} else {
 			CaptureActivity.this.setResult(Activity.RESULT_CANCELED);
 			Toast.makeText(this,
+					// result,
 					getResources().getString(R.string.register_qr_failed),
 					Toast.LENGTH_SHORT).show();
 		}

@@ -245,7 +245,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="保证金:"
+                    android:text="本月收益:"
                     android:textColor="@color/white"
                     android:textSize="17sp" />
             </LinearLayout>

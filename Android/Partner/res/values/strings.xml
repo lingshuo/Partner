@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">合伙人</string>
+    <string name="app_name">超级合伙人</string>
     <string name="register">注册</string>
     <string name="back">返回</string>
     <string name="register_partner_account"><u>注册超级合伙人账号</u></string>

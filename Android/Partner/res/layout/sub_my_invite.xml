@@ -77,7 +77,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
                     <TextView
@@ -100,15 +100,36 @@
                         android:id="@+id/share"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:background="@drawable/share" />
+                        android:background="@drawable/share"
+                        android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/myinvite_btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear"
+                android:layout_margin="10dp"
+                android:background="@drawable/myinvite_join_bg"
+                android:text="邀请朋友加入合伙人!"
+                android:textColor="#ffffffff" />
+
+            <Button
+                android:id="@+id/myinvite_btn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myinvite_btn1"
+                android:layout_margin="10dp"
+                android:background="@drawable/myinvite_peizi_bg"
+                android:text="直接邀请朋友来配资!"
+                android:textColor="#ffffffff" />
 
             <TextView
                 android:id="@+id/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/linear"
+                android:layout_below="@id/myinvite_btn2"
                 android:layout_centerHorizontal="true"
                 android:text="@string/sub_partner_my_use_invitation_code"
                 android:textColor="#333333" />

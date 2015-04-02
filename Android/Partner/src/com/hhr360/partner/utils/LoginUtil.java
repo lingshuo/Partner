@@ -9,7 +9,6 @@ import com.hhr360.partner.observer.ILoginObserver;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-
 /**
  * @author Tans
  */
@@ -27,6 +26,7 @@ public class LoginUtil implements IConstants {
 					public void onSuccess(int code, Header[] head, byte[] result) {
 						// 此处回调为主线程，json数据量不大，解析不费事，为了方便所以放在主线程
 						int userId = 0;
+						String message = "";
 						String inviteCode = null;
 						int loginStatus = 0;
 						// 解析json数据
@@ -35,6 +35,7 @@ public class LoginUtil implements IConstants {
 						try {
 							jsonObj = new JSONObject(json);
 							loginStatus = jsonObj.getInt(IS_SUCCESS);
+							message = jsonObj.getString(MESSAGE);
 							if (loginStatus != 0) {
 								userId = jsonObj.getInt(USER_ID);
 								inviteCode = jsonObj.getString(INVITATION_CODE);
@@ -47,17 +48,17 @@ public class LoginUtil implements IConstants {
 									observer.ILoginObserver_succeed();
 								} else {
 									// 登录失败
-									observer.ILoginObaserver_failed("");
+									observer.ILoginObaserver_failed(message);
 								}
 							} else {
 								// 登录失败
-								observer.ILoginObaserver_failed("");
+								observer.ILoginObaserver_failed(message);
 							}
 
 						} catch (JSONException e) {
 							e.printStackTrace();
 							// 登录失败
-							observer.ILoginObaserver_failed("");
+							observer.ILoginObaserver_failed("字段解析异常");
 						}
 
 					}
@@ -65,8 +66,7 @@ public class LoginUtil implements IConstants {
 					@Override
 					public void onFailure(int code, Header[] head,
 							byte[] result, Throwable throwable) {
-						String errorMsg = new String(result);
-						observer.ILoginObaserver_failed(errorMsg);
+						observer.ILoginObaserver_failed("网络异常");
 					}
 				});
 	}

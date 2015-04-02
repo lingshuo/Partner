@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/login_user_icon"
-                android:hint="@string/register_account"
+                android:hint="昵称"
                 android:maxLength="10"
                 android:singleLine="true" />
 

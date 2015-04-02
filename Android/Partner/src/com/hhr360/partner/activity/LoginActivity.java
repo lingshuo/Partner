@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,16 +16,12 @@ import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hhr360.partner.PartnerApp;
 import com.hhr360.partner.R;
 import com.hhr360.partner.observer.ILoginObserver;
 import com.hhr360.partner.utils.LoginUtil;
-import com.hhr360.partner.utils.UIUtils;
-
 
 public class LoginActivity extends Activity implements OnClickListener,
 		OnTouchListener, ILoginObserver {
@@ -50,6 +47,29 @@ public class LoginActivity extends Activity implements OnClickListener,
 		mRegisterTv.setOnTouchListener(this);
 		mFindPasswordBtn = (Button) findViewById(R.id.find_password);
 		mFindPasswordBtn.setOnClickListener(this);
+		Log.d("tanshuai", "onCreate");
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		setIntent(intent);
+		// 判断是否是从找回密码跳转的自动登录
+		boolean isAutoLogin = getIntent().getBooleanExtra("isautologin", false);
+		if (isAutoLogin) {
+			isAutoLogin = false;
+			Intent t = new Intent(this, PartnerActivity.class);
+			startActivity(t);
+			finish();
+		}
+		Log.d("tanshuai", "onNewIntent");
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.d("tanshuai", "onResume");
+
 	}
 
 	@Override
@@ -72,6 +92,10 @@ public class LoginActivity extends Activity implements OnClickListener,
 					|| TextUtils
 							.isEmpty(mPasswordEditText.getText().toString())) {
 				Toast.makeText(this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
+				return;
+			} else if (mPhoneEditText.getText().toString().length() != 11
+					|| !mPhoneEditText.getText().toString().startsWith("1")) {
+				Toast.makeText(this, "手机号码不符合规则", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			LoginUtil.login(this, mPhoneEditText.getText().toString(),
@@ -121,8 +145,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void ILoginObaserver_failed(String errorMsg) {
-		Toast.makeText(this, getResources().getString(R.string.login_failed),
-				Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
 		mLoginBtn.setClickable(true);
 		mLoginBtn.setText("登录");
 	}

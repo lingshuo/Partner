@@ -1,8 +1,10 @@
 package com.hhr360.partner.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -15,7 +17,6 @@ import com.hhr360.partner.PartnerApp;
 import com.hhr360.partner.R;
 import com.hhr360.partner.observer.IFindPasswordObserver;
 import com.hhr360.partner.utils.FindPasswordUtil;
-
 
 public class FindPasswordActivity extends BaseActivity implements
 		OnClickListener, IFindPasswordObserver {
@@ -49,6 +50,37 @@ public class FindPasswordActivity extends BaseActivity implements
 			} else {
 				FindPasswordUtil.sendSmsCode(this, mPhoneEt.getText()
 						.toString());
+				mSendBtn.setEnabled(false);
+				mSendBtn.setBackgroundResource(R.drawable.loginbutton_press);
+
+				new Thread() {
+					int resetTime = 60;
+
+					public void run() {
+						while (resetTime >= 0) {
+							try {
+								runOnUiThread(new Runnable() {
+
+									@Override
+									public void run() {
+										if (resetTime != 0) {
+											mSendBtn.setText(resetTime + "s后重试");
+										} else {
+											mSendBtn.setText("获取短信验证码");
+											mSendBtn.setEnabled(true);
+											mSendBtn.setBackgroundResource(R.drawable.getphonesecurity_background);
+
+										}
+									}
+								});
+								sleep(1000);
+								resetTime--;
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					};
+				}.start();
 			}
 			break;
 		case R.id.next:
@@ -58,6 +90,8 @@ public class FindPasswordActivity extends BaseActivity implements
 				Intent intent = new Intent(this, ResetPasswordActivity.class);
 				intent.putExtra("phone", mPhoneEt.getText().toString());
 				startActivity(intent);
+			} else {
+				Toast.makeText(this, "短信验证码错误", Toast.LENGTH_SHORT).show();
 			}
 			break;
 		}
@@ -65,8 +99,16 @@ public class FindPasswordActivity extends BaseActivity implements
 
 	@Override
 	public void IFindPasswordObserver_onSuccess(String phoneCode) {
-		Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
+		View toastRoot = getLayoutInflater().inflate(
+				R.layout.dialog_findpwd_success, null);
+
+		Toast toastStart = new Toast(this);
+		toastStart.setGravity(Gravity.CENTER, 0, 0);
+		toastStart.setDuration(Toast.LENGTH_LONG);
+		toastStart.setView(toastRoot);
+		toastStart.show();
 		PartnerApp.PHONE_CODE = phoneCode;
+		mPhoneEt.setEnabled(false);
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
-    android:layout_height="300dp"
+    android:layout_width="250dp"
+    android:layout_height="250dp"
     android:background="@drawable/background_corners" >
 
     <TextView
@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="新密码设置成功," />
+        android:text="新密码设置成功,"
+        android:textColor="#ff000000" />
 
     <TextView
         android:id="@+id/tv2"
@@ -19,7 +20,8 @@
         android:layout_below="@id/tv1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="10s后自动返回登陆界面," />
+        android:text="10s后自动返回登陆界面,"
+        android:textColor="#ff000000" />
 
     <TextView
         android:id="@+id/tv3"
@@ -28,22 +30,24 @@
         android:layout_below="@id/tv2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="或者你也可以点击立即登陆。" />
+        android:text="或者你也可以点击立即登陆。"
+        android:textColor="#ff000000" />
 
     <TextView
-        android:id="@+id/tv4"
+        android:id="@+id/time_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="......8s" />
+        android:text="......8s"
+        android:textColor="#ff000000" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_below="@id/tv4"
+        android:layout_below="@id/time_tv"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/getphonesecurity_background"

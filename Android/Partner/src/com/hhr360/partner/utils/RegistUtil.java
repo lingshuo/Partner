@@ -23,7 +23,10 @@ public class RegistUtil implements IConstants {
 			String phoneNum, String accountName, String passWord,
 			String passWordAgain, String inviteCode) {
 		mContext = context;
-		if (!judgePhoneNumberLegal(phoneNum)) {
+		if (TextUtils.isEmpty(accountName)) {
+			Toast.makeText(mContext, "昵称不能为空", Toast.LENGTH_SHORT).show();
+			return;
+		} else if (!judgePhoneNumberLegal(phoneNum)) {
 			return;
 		} else if (!judgePasswordLegal(mContext, passWord, passWordAgain)) {
 			return;
@@ -37,7 +40,7 @@ public class RegistUtil implements IConstants {
 
 	// 判断手机号是否符合要求
 	private boolean judgePhoneNumberLegal(String phoneNum) {
-		if (phoneNum.length() != 11) {
+		if (phoneNum.length() != 11 || !phoneNum.startsWith("1")) {
 			Toast.makeText(
 					mContext,
 					mContext.getResources().getString(
@@ -84,7 +87,7 @@ public class RegistUtil implements IConstants {
 
 	// 利用正则表达式判断邀请码是否正确
 	public static boolean isInviteCodeLegal(String code) {
-		String regex = "^[0-9][12]$";
+		String regex = "[0-9]{12}$";
 		return code.matches(regex) ? true : false;
 	}
 
