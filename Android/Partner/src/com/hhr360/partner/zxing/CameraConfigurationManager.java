@@ -1,27 +1,12 @@
-/*
- * Copyright (C) 2010 ZXing authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.hhr360.partner.zxing;
 
-import java.lang.reflect.Method;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.graphics.Point;
 import android.hardware.Camera;
+import android.hardware.Camera.Size;
 import android.os.Build;
 import android.util.Log;
 import android.view.Display;
@@ -54,42 +39,49 @@ final class CameraConfigurationManager {
 		Camera.Parameters parameters = camera.getParameters();
 		previewFormat = parameters.getPreviewFormat();
 		previewFormatString = parameters.get("preview-format");
-		Log.d(TAG, "Default preview format: " + previewFormat + '/'
-				+ previewFormatString);
 		WindowManager manager = (WindowManager) context
 				.getSystemService(Context.WINDOW_SERVICE);
 		Display display = manager.getDefaultDisplay();
-		screenResolution = new Point(display.getWidth(), display.getHeight());
-		Log.d(TAG, "Screen resolution: " + screenResolution);
-		//Ϊ�������
-	    Point screenResolutionForCamera = new Point();
-	    screenResolutionForCamera.x = screenResolution.x;
-	    screenResolutionForCamera.y = screenResolution.y;
-	    if (screenResolution.x < screenResolution.y) {
-	        screenResolutionForCamera.x = screenResolution.y;
-	        screenResolutionForCamera.y = screenResolution.x;
-	    }
-	    // �¾�ڶ�����Ҫ��������޸�
-	    cameraResolution = getCameraResolution(parameters, screenResolutionForCamera);
-		Log.d(TAG, "Camera resolution: " + screenResolution);
+		int width = display.getWidth();
+		int height = display.getHeight();
+		screenResolution = new Point(width, height);
+		if (width < height) {
+			cameraResolution = getCameraResolution(parameters, new Point(
+					height, width));
+		} else {
+			cameraResolution = getCameraResolution(parameters, screenResolution);
+		}
 	}
 
 	/**
-	 * Sets the camera up to take preview images which are used for both preview and decoding.
-	 * We detect the preview format here so that buildLuminanceSource() can build an appropriate
-	 * LuminanceSource subclass. In the future we may want to force YUV420SP as it's the smallest,
-	 * and the planar Y can be used for barcode scanning without a copy in some cases.
+	 * Sets the camera up to take preview images which are used for both preview
+	 * and decoding. We detect the preview format here so that
+	 * buildLuminanceSource() can build an appropriate LuminanceSource subclass.
+	 * In the future we may want to force YUV420SP as it's the smallest, and the
+	 * planar Y can be used for barcode scanning without a copy in some cases.
 	 */
 	void setDesiredCameraParameters(Camera camera) {
 		Camera.Parameters parameters = camera.getParameters();
+		List<Size> supportedPreviewSizes = parameters
+				.getSupportedPreviewSizes();
+		int position = 0;
+		if (supportedPreviewSizes.size() > 2) {
+			position = supportedPreviewSizes.size() / 2 + 1;// supportedPreviewSizes.get();
+		} else {
+			position = supportedPreviewSizes.size() / 2;
+		}
+
+		int width = supportedPreviewSizes.get(position).width;
+		int height = supportedPreviewSizes.get(position).height;
 		Log.d(TAG, "Setting preview size: " + cameraResolution);
-		parameters.setPreviewSize(cameraResolution.x, cameraResolution.y);
+		camera.setDisplayOrientation(90);
+		cameraResolution.x = width;
+		cameraResolution.y = height;
+		parameters.setPreviewSize(width, height);
 		setFlash(parameters);
 		setZoom(parameters);
 		// setSharpness(parameters);
-		setDisplayOrientation(camera, 90);
 		camera.setParameters(parameters);
-
 	}
 
 	Point getCameraResolution() {
@@ -173,7 +165,6 @@ final class CameraConfigurationManager {
 			}
 
 		}
-
 		if (bestX > 0 && bestY > 0) {
 			return new Point(bestX, bestY);
 		}
@@ -303,17 +294,4 @@ final class CameraConfigurationManager {
 	 * 
 	 * parameters.set("sharpness", desiredSharpness); }
 	 */
-
-	/* �ı���������ķ���ķ��� */
-	protected void setDisplayOrientation(Camera camera, int angle) {
-		Method downPolymorphic = null;
-		try {
-			downPolymorphic = camera.getClass().getMethod(
-					"setDisplayOrientation", new Class[] { int.class });
-			if (downPolymorphic != null)
-				downPolymorphic.invoke(camera, new Object[] { angle });
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
