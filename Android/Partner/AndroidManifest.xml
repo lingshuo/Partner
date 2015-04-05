@@ -40,6 +40,8 @@
         <activity
             android:name="com.hhr360.partner.activity.ResetPwdDialogActivity"
             android:theme="@android:style/Theme.Dialog" />
+        <activity android:name="com.hhr360.partner.activity.SubMyPartnerDetailFirstActivity" />
+        <activity android:name="com.hhr360.partner.activity.SubMyPartnerDetailSecondActivity" />
     </application>
 
 </manifest>

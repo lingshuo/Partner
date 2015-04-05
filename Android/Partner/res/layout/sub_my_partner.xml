@@ -1,10 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:utils="http://schemas.android.com/apk/res/com.hhr360.partner"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical" >
 
     <include layout="@layout/find_password_head" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/background_corners" >
+
+        <com.hhr360.partner.UIUtils.CustomImageView
+            android:id="@+id/head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            utils:src="@drawable/header"
+            utils:type="circle" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/head"
+            android:layout_below="@id/head"
+            android:layout_marginTop="10dp"
+            android:text="注册"
+            android:textColor="#8f000000" />
+
+        <TextView
+            android:id="@+id/register_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/textView6"
+            android:layout_below="@id/textView6"
+            android:text="2015-04-01"
+            android:textColor="#8f000000" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textView6"
+            android:layout_marginLeft="170dp"
+            android:text="最后登录"
+            android:textColor="#8f000000" />
+
+        <TextView
+            android:id="@+id/lastlogin_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/textView7"
+            android:layout_below="@id/textView7"
+            android:text="2015-04-01"
+            android:textColor="#8f000000" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/partner_textview_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/head"
+            android:layout_toRightOf="@+id/head"
+            android:text="会员ID:" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/partner_textview_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView1"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/head"
+            android:text="等级:" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_toRightOf="@+id/textView5"
+            android:background="@drawable/star" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/partner_textview_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_toRightOf="@+id/textView1"
+            android:text="dxq" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/partner_textview_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/textView2"
+            android:text="昵称:" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/partner_textview_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_toRightOf="@+id/textView3"
+            android:text="董晓秋" />
+
+        <View
+            android:id="@+id/divide"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/register_time"
+            android:layout_marginTop="20dp"
+            android:background="#ffcccccc" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/divide"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/rel_btn1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/partner_btn"
+                android:clickable="true" >
+
+                <View
+                    android:id="@+id/baseline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_centerInParent="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/baseline1"
+                    android:layout_centerHorizontal="true"
+                    android:text="合伙人" />
+
+                <TextView
+                    android:id="@+id/partner_num_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/baseline1"
+                    android:layout_centerHorizontal="true"
+                    android:text="182" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="#ffcccccc" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_btn2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/partner_btn"
+                android:clickable="true" >
+
+                <View
+                    android:id="@+id/baseline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_centerInParent="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/baseline2"
+                    android:layout_centerHorizontal="true"
+                    android:text="本月收益" />
+
+                <TextView
+                    android:id="@+id/month_profit_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/baseline2"
+                    android:layout_centerHorizontal="true"
+                    android:text="182" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="#ffcccccc" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_btn3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/partner_btn"
+                android:clickable="true" >
+
+                <View
+                    android:id="@+id/baseline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_centerInParent="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/baseline3"
+                    android:layout_centerHorizontal="true"
+                    android:text="距离升级" />
+
+                <TextView
+                    android:id="@+id/level_up_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/baseline3"
+                    android:layout_centerHorizontal="true"
+                    android:text="182" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

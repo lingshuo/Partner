@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.hhr360.partner.BaseActivity;
 import com.hhr360.partner.PartnerApp;
@@ -46,7 +47,7 @@ public class ResetPasswordActivity extends BaseActivity implements
 
 	@Override
 	public void IResetPasswordObserver_onFailed(String msg) {
-
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
