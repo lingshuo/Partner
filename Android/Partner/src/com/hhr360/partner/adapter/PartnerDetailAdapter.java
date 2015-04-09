@@ -1,5 +1,7 @@
 package com.hhr360.partner.adapter;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,43 +10,50 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.hhr360.partner.R;
+import com.hhr360.partner.bean.User;
 
 public class PartnerDetailAdapter extends BaseAdapter {
 	public Context mContext;
+	public ArrayList<User> mList;
 
-	public PartnerDetailAdapter(Context context) {
+	public PartnerDetailAdapter(Context context, ArrayList<User> list) {
 		mContext = context;
+		mList = list;
 	}
 
 	@Override
 	public int getCount() {
-		return 10;
+		return mList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return null;
+		return mList.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		return 0;
+		return position;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		// ViewHolder holder;
-		// if (convertView == null) {
-		// holder = new ViewHolder();
-		convertView = LayoutInflater.from(mContext).inflate(
-				R.layout.listview_partner_item, null);
-		// convertView = holder.nameTv = (TextView) convertView
-		// .findViewById(R.id.name_tv);
-		// // convertV
-		// } else {
-		// holder = (ViewHolder) convertView.getTag();
-		// }
+		ViewHolder holder;
+		if (convertView == null) {
+			holder = new ViewHolder();
+			convertView = LayoutInflater.from(mContext).inflate(
+					R.layout.listview_partner_item, null);
+			convertView = holder.nameTv = (TextView) convertView
+					.findViewById(R.id.name_tv);
+			holder.nameTv = (TextView) convertView.findViewById(R.id.name_tv);
+			holder.monthPeiziTv = (TextView) convertView
+					.findViewById(R.id.month_peizi_tv);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+		holder.nameTv.setText(mList.get(position).getAccountName());
+		holder.monthPeiziTv.setText(mList.get(position).getMonthlyIncome());
 		return convertView;
 	}
 

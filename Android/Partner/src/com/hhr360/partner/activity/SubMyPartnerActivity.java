@@ -11,9 +11,11 @@ import android.widget.TextView;
 import com.hhr360.partner.BaseActivity;
 import com.hhr360.partner.PartnerApp;
 import com.hhr360.partner.R;
+import com.hhr360.partner.observer.IPartnerObserver;
+import com.hhr360.partner.utils.PartnerUtils;
 
 public class SubMyPartnerActivity extends BaseActivity implements
-		OnClickListener {
+		OnClickListener, IPartnerObserver {
 	private TextView mUserIdTv;
 	private TextView mUserNameTv;
 	private TextView mRegistTimeTv;
@@ -28,6 +30,7 @@ public class SubMyPartnerActivity extends BaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		PartnerUtils.getInstance().getPartner(this, PartnerApp.USER.getId());
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.sub_my_partner);
 		mUserIdTv = (TextView) findViewById(R.id.textView2);
@@ -72,5 +75,16 @@ public class SubMyPartnerActivity extends BaseActivity implements
 		case R.id.rel_btn3:
 			break;
 		}
+	}
+
+	@Override
+	public void IPartnerObserver_success() {
+		mRegistTimeTv.setText(PartnerApp.PARTNER.getRegisterTime());
+		mLastLoginTimeTv.setText(PartnerApp.PARTNER.getLastLoginTime());
+	}
+
+	@Override
+	public void IPartnerObserver_failed(String errorMsg) {
+
 	}
 }

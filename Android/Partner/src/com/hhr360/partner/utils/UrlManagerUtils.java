@@ -10,6 +10,7 @@ public class UrlManagerUtils {
 	private static final String SENDSMSCODE = "phoneCode";
 	private static final String CHANGEPWD = "changePwd";
 	private static final String REGISTERSENDSMSCODE = "user/phoneCode";
+	private static final String PARTNER = "partners?user_id=";
 
 	// 注册的url
 	public static String getRegisterUrl() {
@@ -26,6 +27,12 @@ public class UrlManagerUtils {
 	// 获取用户基本信息
 	public static String getUserMsgUrl() {
 		String url = DOMAIN;
+		return url;
+	}
+
+	// 获取合伙人基本信息
+	public static String getPartnerUrl(int userId) {
+		String url = DOMAIN + PARTNER + userId;
 		return url;
 	}
 

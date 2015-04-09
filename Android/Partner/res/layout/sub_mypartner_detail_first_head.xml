@@ -154,7 +154,7 @@
                     android:textColor="#ffff0000" />
 
                 <TextView
-                    android:id="@+id/people_num_tv"
+                    android:id="@+id/second_people_num_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/baseline3"
@@ -297,7 +297,7 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@id/baseline6"
                         android:layout_centerHorizontal="true"
-                        android:text="股票配资" />
+                        android:text="股票返佣" />
 
                     <TextView
                         android:id="@+id/second_stock_fanyong_tv"
@@ -330,7 +330,7 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@id/baseline7"
                         android:layout_centerHorizontal="true"
-                        android:text="期货配资" />
+                        android:text="期货返佣" />
 
                     <TextView
                         android:id="@+id/second_future_fanyong_tv"
@@ -363,7 +363,7 @@
                     android:textColor="#ffff0000" />
 
                 <TextView
-                    android:id="@+id/contribute_tv"
+                    android:id="@+id/second_contribute_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/baseline8"
@@ -571,7 +571,7 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@id/first_baseline6"
                         android:layout_centerHorizontal="true"
-                        android:text="股票配资" />
+                        android:text="股票返佣" />
 
                     <TextView
                         android:id="@+id/first_stock_fanyong_tv"
@@ -604,7 +604,7 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@id/first_baseline7"
                         android:layout_centerHorizontal="true"
-                        android:text="期货配资" />
+                        android:text="期货返佣" />
 
                     <TextView
                         android:id="@+id/first_future_fanyong_tv"

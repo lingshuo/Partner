@@ -12,8 +12,10 @@ import android.widget.Toast;
 
 import com.hhr360.partner.PartnerApp;
 import com.hhr360.partner.R;
+import com.hhr360.partner.bean.User;
 import com.hhr360.partner.observer.IPartnerObserver;
 import com.hhr360.partner.utils.PartnerUtils;
+import com.hhr360.partner.utils.PreferenceUtils;
 
 public class PartnerActivity extends Activity implements OnClickListener,
 		IPartnerObserver {
@@ -25,11 +27,16 @@ public class PartnerActivity extends Activity implements OnClickListener,
 	private TextView mTv6;
 	private TextView mTv7;
 	private TextView mTv8;
+	private final static int ISLOGOUT = 1024;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		PartnerUtils.getInstance().getPartner(this, PartnerApp.USER);
+		User user = new User();
+		user.setId(PreferenceUtils.getID());
+		user.setPhone(PreferenceUtils.getPhone());
+		user.setInvitationCode(PreferenceUtils.getInviteCode());
+		PartnerUtils.getInstance().getUser(this, user);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.partner);
 		mRelBtn[0] = (RelativeLayout) findViewById(R.id.rel01);
@@ -100,11 +107,23 @@ public class PartnerActivity extends Activity implements OnClickListener,
 			Toast.makeText(this, "11", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.rel12:
-			Toast.makeText(this, "12", Toast.LENGTH_SHORT).show();
+			intent = new Intent();
+			intent.setClass(this, SettingsActivity.class);
+			startActivityForResult(intent, ISLOGOUT);
 			break;
 
 		default:
 			break;
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == ISLOGOUT) {
+			if (resultCode == 1) {
+				finish();
+			}
 		}
 	}
 

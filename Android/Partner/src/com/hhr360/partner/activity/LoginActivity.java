@@ -19,9 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hhr360.partner.PartnerApp;
 import com.hhr360.partner.R;
 import com.hhr360.partner.observer.ILoginObserver;
 import com.hhr360.partner.utils.LoginUtil;
+import com.hhr360.partner.utils.PreferenceUtils;
 
 public class LoginActivity extends Activity implements OnClickListener,
 		OnTouchListener, ILoginObserver {
@@ -138,6 +140,11 @@ public class LoginActivity extends Activity implements OnClickListener,
 		// getResources().getString(R.string.login_success),
 		// Toast.LENGTH_SHORT).show();
 
+		// 存储登录状态
+		PreferenceUtils.setLoginStatus(true);
+		PreferenceUtils.setID(PartnerApp.USER.getId());
+		PreferenceUtils.setInviteCode(PartnerApp.USER.getInvitationCode());
+		PreferenceUtils.setPhone(PartnerApp.USER.getPhone());
 		Intent intent = new Intent(this, PartnerActivity.class);
 		startActivity(intent);
 		finish();

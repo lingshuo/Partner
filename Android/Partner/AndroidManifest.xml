@@ -42,6 +42,7 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name="com.hhr360.partner.activity.SubMyPartnerDetailFirstActivity" />
         <activity android:name="com.hhr360.partner.activity.SubMyPartnerDetailSecondActivity" />
+        <activity android:name="com.hhr360.partner.activity.SettingsActivity" />
     </application>
 
 </manifest>

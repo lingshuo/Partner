@@ -1,6 +1,7 @@
 package com.hhr360.partner.utils;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +29,95 @@ public class PartnerUtils {
 		return instance;
 	}
 
-	public void getPartner(final IPartnerObserver observer, User partner) {
+	// 获取合伙人信息
+	public void getPartner(final IPartnerObserver observer, int userId) {
+
+		String url = UrlManagerUtils.getPartnerUrl(userId);
+		HttpUtils.get(url, new AsyncHttpResponseHandler() {
+
+			@Override
+			public void onSuccess(int code, Header[] head, byte[] result) {
+				String json = new String(result);
+				try {
+					JSONObject jsonObj = new JSONObject(json);
+					String userInfo = jsonObj.getString("userinfo");
+					JSONObject userInfoJsonObj = new JSONObject(userInfo);
+					PartnerApp.PARTNER.setRegisterTime(userInfoJsonObj
+							.getString("register_time"));
+					PartnerApp.PARTNER.setLastLoginTime(userInfoJsonObj
+							.getString("last_login_time"));
+
+					String statInfo = jsonObj.getString("statinfo");
+					JSONObject statInfoJsonObj = new JSONObject(statInfo);
+					PartnerApp.PARTNER.setFirstPartnerNum(statInfoJsonObj
+							.getInt("firstly_partner_num"));
+					PartnerApp.PARTNER.setSecondPartnerNum(statInfoJsonObj
+							.getInt("secondary_partner_num"));
+					PartnerApp.PARTNER.setMonthIncome(statInfoJsonObj
+							.getDouble("monthly_income"));
+					PartnerApp.PARTNER.setSecStockEndow(statInfoJsonObj
+							.getDouble("secondary_stock_endowment"));
+					PartnerApp.PARTNER.setSecFutEndow(statInfoJsonObj
+							.getDouble("secondary_futures_endowment"));
+					PartnerApp.PARTNER.setSecStockComm(statInfoJsonObj
+							.getDouble("secondary_stock_commission"));
+					PartnerApp.PARTNER.setSecFutComm(statInfoJsonObj
+							.getDouble("secondary_futures_commission"));
+					PartnerApp.PARTNER.setSecContrIncome(statInfoJsonObj
+							.getDouble("secondary_contribution_income"));
+					PartnerApp.PARTNER.setFirStockEndow(statInfoJsonObj
+							.getDouble("firstly_stock_endowment"));
+					PartnerApp.PARTNER.setFirFutEndow(statInfoJsonObj
+							.getDouble("firstly_futures_endowment"));
+					PartnerApp.PARTNER.setFirStockComm(statInfoJsonObj
+							.getDouble("firstly_stock_commission"));
+					PartnerApp.PARTNER.setFirFutComm(statInfoJsonObj
+							.getDouble("firstly_futures_commission"));
+					PartnerApp.PARTNER.setFirContrIncome(statInfoJsonObj
+							.getDouble("firstly_contribution_income"));
+
+					String partnersJson = jsonObj.getString("partners");
+					JSONArray partnerJsonArray = new JSONArray(partnersJson);
+					User user;
+					PartnerApp.PARTNER.mPartnerList.clear();
+					for (int i = 0; i < partnerJsonArray.length(); i++) {
+						user = new User();
+						JSONObject partnerJsonObj = partnerJsonArray
+								.getJSONObject(i);
+						user.setId(partnerJsonObj.getInt("id"));
+						user.setAccountName(partnerJsonObj
+								.getString("account_name"));
+						user.setFirstlyPartnerNum(partnerJsonObj
+								.getString("firstly_partner_num"));
+						user.setSecondlyPartnerNum(partnerJsonObj
+								.getString("secondary_partner_num"));
+						user.setMonthlyIncome(Integer.parseInt(partnerJsonObj
+								.getString("monthly_stock_endowment"))
+								+ Integer.parseInt(partnerJsonObj
+										.getString("monthly_futures_endowment"))
+								+ "");
+						PartnerApp.PARTNER.mPartnerList.add(user);
+
+					}
+					observer.IPartnerObserver_success();
+				} catch (JSONException e) {
+					e.printStackTrace();
+					observer.IPartnerObserver_failed("Json解析异常");
+				}
+			}
+
+			@Override
+			public void onFailure(int code, Header[] head, byte[] result,
+					Throwable throwable) {
+				String errorMsg = new String(result);
+				observer.IPartnerObserver_failed(errorMsg);
+			}
+		});
+
+	}
+
+	// 获取登录用户信息
+	public void getUser(final IPartnerObserver observer, User partner) {
 		String url = UrlManagerUtils.getUserMsgUrl();
 		RequestParams params = new RequestParams();
 		params.put("user_id", partner.getId());
@@ -38,22 +127,6 @@ public class PartnerUtils {
 
 			@Override
 			public void onSuccess(int code, Header[] head, byte[] result) {
-				// {"id":"1","account_name":"test","password":"test123",
-				// "user_name":null,"card_number":null,"is_check_card":null,
-				// "phone":"18888888888","email":null,"is_bind_email":null,
-				// "is_marriage":null,"live_address":null,"max_degree":null,
-				// "business_type":null,"position_name":null,"salary":null,
-				// "draw_password":null,"card_before_pic":null,"card_behind_pic":null,
-				// "card_hand_pic":null,"account_balance":null,"account_total_money":null,
-				// "match_money":null,"safe_money":null,"freeze_money":null,"safe_level":null,
-				// "register_time":"2015-03-26 16:35:35","register_ip":"221.130.41.149",
-				// "extend_person_num":null,"borrow_person_num":null,"commission_total":null,
-				// "exchange_money":null,"visit_ip":null,"visit_num":null,"phone_code":null,
-				// "email_code":null,"login_token":null,"state":null,"province_id":null,
-				// "city_id":null,"province_name":null,"city_name":null,"gender":null,
-				// "recommend_id":null,"login_time":null,"fee_total":null,"recharge_money":null,
-				// "draw_money":null,"phone_code_time":null,"hhr_level":null,"hhr_parentid":null,
-				// "invitation_code":"123456789012"}
 				String json = new String(result);
 				try {
 					JSONObject jsonObj = new JSONObject(json);
