@@ -1,15 +1,20 @@
 package com.hhr360.partner.activity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hhr360.partner.BaseActivity;
 import com.hhr360.partner.PartnerApp;
@@ -35,6 +40,19 @@ public class SubMyInviteActivity extends BaseActivity implements
 		mIdTextView = (TextView) findViewById(R.id.id_tv);
 		mAccountTextView = (TextView) findViewById(R.id.account_tv);
 		mInviteTextView = (TextView) findViewById(R.id.invitation_tv);
+		mInviteTextView.setOnLongClickListener(new OnLongClickListener() {
+
+			@Override
+			public boolean onLongClick(View v) {
+				ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+				ClipData textCd = ClipData.newPlainText("invite",
+						PartnerApp.USER.getInvitationCode());
+				clipboard.setPrimaryClip(textCd);
+				Toast.makeText(SubMyInviteActivity.this, "邀请码已复制",
+						Toast.LENGTH_LONG).show();
+				return false;
+			}
+		});
 		mQrImageView = (ImageView) findViewById(R.id.qr_img);
 		mIdTextView.setText(PartnerApp.USER.getId() + "");
 		mAccountTextView.setText(PartnerApp.USER.getAccountName());
