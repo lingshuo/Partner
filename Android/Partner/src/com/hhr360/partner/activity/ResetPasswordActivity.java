@@ -22,15 +22,22 @@ public class ResetPasswordActivity extends BaseActivity implements
 	private EditText mPasswordAgainEditText;
 	private Button mButton;
 	private String mPhone;
+	private boolean mIsFromSettings = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
 		mPhone = intent.getStringExtra("phone");
+		mIsFromSettings = intent.getBooleanExtra("isfromsettings", false);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.reset_password);
-		setHeaderTextName(getResources().getString(R.string.reset_password));
+		if (mIsFromSettings) {
+			setHeaderTextName("修改密码");
+		} else {
+			setHeaderTextName(getResources().getString(R.string.reset_password));
+
+		}
 		mPasswordEditText = (EditText) findViewById(R.id.regist_password);
 		mPasswordAgainEditText = (EditText) findViewById(R.id.regist_password_again);
 		mButton = (Button) findViewById(R.id.next);
@@ -39,6 +46,11 @@ public class ResetPasswordActivity extends BaseActivity implements
 
 	@Override
 	public void IResetPasswordObserver_onSuccess(String msg) {
+		if (mIsFromSettings) {
+			Toast.makeText(this, "密码修改成功", Toast.LENGTH_SHORT).show();
+			finish();
+			return;
+		}
 		Intent intent = new Intent(this, ResetPwdDialogActivity.class);
 		intent.putExtra("phone", mPhone);
 		intent.putExtra("password", mPasswordEditText.getText().toString());
