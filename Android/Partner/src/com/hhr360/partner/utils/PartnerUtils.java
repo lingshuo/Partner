@@ -4,11 +4,10 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import android.text.TextUtils;
 
 import com.hhr360.partner.PartnerApp;
-import com.hhr360.partner.bean.Partner;
+import com.hhr360.partner.bean.User;
 import com.hhr360.partner.observer.IPartnerObserver;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -29,7 +28,7 @@ public class PartnerUtils {
 		return instance;
 	}
 
-	public void getPartner(final IPartnerObserver observer, Partner partner) {
+	public void getPartner(final IPartnerObserver observer, User partner) {
 		String url = UrlManagerUtils.getUserMsgUrl();
 		RequestParams params = new RequestParams();
 		params.put("user_id", partner.getId());
@@ -64,26 +63,27 @@ public class PartnerUtils {
 						JSONObject userJsonObj = new JSONObject(userJson);
 						String accountName = userJsonObj
 								.getString("account_name");
-						PartnerApp.PARTNER.setAccountName(accountName);
+						PartnerApp.USER.setAccountName(accountName);
 						String statJson = jsonObj.getString("stat");
-						if(!TextUtils.isEmpty(statJson)&&!statJson.equals("null")){
-							
+						if (!TextUtils.isEmpty(statJson)
+								&& !statJson.equals("null")) {
+
 							JSONObject statJonObj = new JSONObject(statJson);
-							PartnerApp.PARTNER.setHhrLevel(statJonObj
+							PartnerApp.USER.setHhrLevel(statJonObj
 									.getString("hhr_level"));
-							PartnerApp.PARTNER.setFirstlyPartnerNum(statJonObj
+							PartnerApp.USER.setFirstlyPartnerNum(statJonObj
 									.getString("firstly_partner_num"));
-							PartnerApp.PARTNER.setSecondlyPartnerNum(statJonObj
+							PartnerApp.USER.setSecondlyPartnerNum(statJonObj
 									.getString("secondary_partner_num"));
-							PartnerApp.PARTNER.setExtendPartnerNum(statJonObj
+							PartnerApp.USER.setExtendPartnerNum(statJonObj
 									.getString("extend_person_new"));
-							PartnerApp.PARTNER.setInterestReturnCoefficient(statJonObj
+							PartnerApp.USER.setInterestReturnCoefficient(statJonObj
 									.getString("interest_return_coefficient"));
-							PartnerApp.PARTNER.setChargeReturnCoefficient(statJonObj
+							PartnerApp.USER.setChargeReturnCoefficient(statJonObj
 									.getString("charges_return_coefficient"));
-							PartnerApp.PARTNER.setDailyIncome(statJonObj
+							PartnerApp.USER.setDailyIncome(statJonObj
 									.getString("daily_income"));
-							PartnerApp.PARTNER.setMonthlyIncome(statJonObj
+							PartnerApp.USER.setMonthlyIncome(statJonObj
 									.getString("monthly_income"));
 						}
 						observer.IPartnerObserver_success();

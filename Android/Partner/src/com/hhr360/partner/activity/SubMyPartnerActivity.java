@@ -45,13 +45,13 @@ public class SubMyPartnerActivity extends BaseActivity implements
 		mRelBtn2.setOnClickListener(this);
 		mRelBtn3.setOnClickListener(this);
 
-		mUserIdTv.setText(PartnerApp.PARTNER.getId() + "");
-		mUserNameTv.setText(PartnerApp.PARTNER.getAccountName());
-		mPartnerNumTv.setText(Integer.parseInt(PartnerApp.PARTNER
+		mUserIdTv.setText(PartnerApp.USER.getId() + "");
+		mUserNameTv.setText(PartnerApp.USER.getAccountName());
+		mPartnerNumTv.setText(Integer.parseInt(PartnerApp.USER
 				.getFirstlyPartnerNum())
-				+ Integer.parseInt(PartnerApp.PARTNER.getSecondlyPartnerNum())
+				+ Integer.parseInt(PartnerApp.USER.getSecondlyPartnerNum())
 				+ "");
-		mMonthProfitTv.setText(PartnerApp.PARTNER.getMonthlyIncome());
+		mMonthProfitTv.setText(PartnerApp.USER.getMonthlyIncome());
 		// mLevelUpTv.setText(PartnerApp.PARTNER.get);
 		// mRegistTimeTv.setText(PartnerApp.PARTNER.get)
 

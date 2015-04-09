@@ -15,7 +15,6 @@ import com.hhr360.partner.R;
 import com.hhr360.partner.observer.IPartnerObserver;
 import com.hhr360.partner.utils.PartnerUtils;
 
-
 public class PartnerActivity extends Activity implements OnClickListener,
 		IPartnerObserver {
 	private TextView mIdTextView;
@@ -30,7 +29,7 @@ public class PartnerActivity extends Activity implements OnClickListener,
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		PartnerUtils.getInstance().getPartner(this, PartnerApp.PARTNER);
+		PartnerUtils.getInstance().getPartner(this, PartnerApp.USER);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.partner);
 		mRelBtn[0] = (RelativeLayout) findViewById(R.id.rel01);
@@ -111,15 +110,15 @@ public class PartnerActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void IPartnerObserver_success() {
-		mIdTextView.setText(PartnerApp.PARTNER.getId() + "");
-		mAccountNameTextView.setText(PartnerApp.PARTNER.getAccountName());
-		mTv4.setText(Integer.parseInt(PartnerApp.PARTNER.getFirstlyPartnerNum())
-				+ Integer.parseInt(PartnerApp.PARTNER.getSecondlyPartnerNum())
+		mIdTextView.setText(PartnerApp.USER.getId() + "");
+		mAccountNameTextView.setText(PartnerApp.USER.getAccountName());
+		mTv4.setText(Integer.parseInt(PartnerApp.USER.getFirstlyPartnerNum())
+				+ Integer.parseInt(PartnerApp.USER.getSecondlyPartnerNum())
 				+ "");
-		mTv5.setText(PartnerApp.PARTNER.getInterestReturnCoefficient());
-		mTv6.setText(PartnerApp.PARTNER.getChargeReturnCoefficient());
-		mTv7.setText("日增收益:"+PartnerApp.PARTNER.getDailyIncome());
-		mTv8.setText("本月收益:"+PartnerApp.PARTNER.getMonthlyIncome());
+		mTv5.setText(PartnerApp.USER.getInterestReturnCoefficient());
+		mTv6.setText(PartnerApp.USER.getChargeReturnCoefficient());
+		mTv7.setText("日增收益:" + PartnerApp.USER.getDailyIncome());
+		mTv8.setText("本月收益:" + PartnerApp.USER.getMonthlyIncome());
 
 	}
 

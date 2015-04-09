@@ -1,6 +1,6 @@
 package com.hhr360.partner.bean;
 
-public class Partner {
+public class User {
 
 	private int id;
 	private String accountName = "";

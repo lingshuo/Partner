@@ -36,10 +36,10 @@ public class SubMyInviteActivity extends BaseActivity implements
 		mAccountTextView = (TextView) findViewById(R.id.account_tv);
 		mInviteTextView = (TextView) findViewById(R.id.invitation_tv);
 		mQrImageView = (ImageView) findViewById(R.id.qr_img);
-		mIdTextView.setText(PartnerApp.PARTNER.getId() + "");
-		mAccountTextView.setText(PartnerApp.PARTNER.getAccountName());
-		mInviteTextView.setText(PartnerApp.PARTNER.getInvitationCode());
-		Bitmap bitmap = QrUtil.create2DCoderBitmap(PartnerApp.PARTNER
+		mIdTextView.setText(PartnerApp.USER.getId() + "");
+		mAccountTextView.setText(PartnerApp.USER.getAccountName());
+		mInviteTextView.setText(PartnerApp.USER.getInvitationCode());
+		Bitmap bitmap = QrUtil.create2DCoderBitmap(PartnerApp.USER
 				.getInvitationCode());
 		mQrImageView.setImageBitmap(bitmap);
 		mButton1 = (Button) findViewById(R.id.myinvite_btn1);
@@ -53,14 +53,14 @@ public class SubMyInviteActivity extends BaseActivity implements
 		StringBuilder sb = new StringBuilder("您的朋友“");
 		switch (v.getId()) {
 		case R.id.myinvite_btn1:
-			sb.append(PartnerApp.PARTNER.getAccountName());
+			sb.append(PartnerApp.USER.getAccountName());
 			sb.append("”邀请您成为他的超级合伙人，注册邀请码是：");
-			sb.append(PartnerApp.PARTNER.getInvitationCode());
+			sb.append(PartnerApp.USER.getInvitationCode());
 			sb.append("，超级合伙人APP下载地址：http://app.hhr360.com");
 			sendSMS(sb.toString());
 			break;
 		case R.id.myinvite_btn2:
-			sb.append(PartnerApp.PARTNER.getAccountName());
+			sb.append(PartnerApp.USER.getAccountName());
 			sb.append("”邀请您配资，现在就配资请访问：https://www.kunzhoudade.com/812345678910");
 			sendSMS(sb.toString());
 			break;

@@ -40,10 +40,10 @@ public class LoginUtil implements IConstants {
 								userId = jsonObj.getInt(USER_ID);
 								inviteCode = jsonObj.getString(INVITATION_CODE);
 								if (userId > 0) {
-									PartnerApp.PARTNER.setId(userId);
-									PartnerApp.PARTNER
+									PartnerApp.USER.setId(userId);
+									PartnerApp.USER
 											.setInvitationCode(inviteCode);
-									PartnerApp.PARTNER.setPhone(phoneNum);
+									PartnerApp.USER.setPhone(phoneNum);
 									// 登录成功回调
 									observer.ILoginObserver_succeed();
 								} else {
