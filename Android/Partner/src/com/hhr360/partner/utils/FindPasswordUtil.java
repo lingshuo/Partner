@@ -8,14 +8,13 @@ import com.hhr360.partner.observer.IFindPasswordObserver;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-
 public class FindPasswordUtil implements IConstants {
 
 	public static void sendSmsCode(final IFindPasswordObserver observer,
-			String phone) {
+			String phone, int type) {
 		RequestParams params = new RequestParams();
 		params.put(PHONE, phone);
-		HttpUtils.post(UrlManagerUtils.getSendSmsCodeUrl(), params,
+		HttpUtils.post(UrlManagerUtils.getSendSmsCodeUrl(type), params,
 				new AsyncHttpResponseHandler() {
 
 					@Override

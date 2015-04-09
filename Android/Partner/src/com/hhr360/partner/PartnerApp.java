@@ -10,5 +10,7 @@ public class PartnerApp extends Application {
 	public static Partner PARTNER = new Partner();
 	// 找回密码验证码
 	public static String PHONE_CODE = "";
+	// 注册验证码
+	public static String REGIST_CODE = "";
 
 }

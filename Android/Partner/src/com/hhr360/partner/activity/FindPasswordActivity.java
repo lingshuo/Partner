@@ -49,7 +49,7 @@ public class FindPasswordActivity extends BaseActivity implements
 				Toast.makeText(this, "手机号码不正确", Toast.LENGTH_SHORT).show();
 			} else {
 				FindPasswordUtil.sendSmsCode(this, mPhoneEt.getText()
-						.toString());
+						.toString(), 0);
 				mSendBtn.setEnabled(false);
 				mSendBtn.setBackgroundResource(R.drawable.loginbutton_press);
 
@@ -95,6 +95,12 @@ public class FindPasswordActivity extends BaseActivity implements
 			}
 			break;
 		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		PartnerApp.REGIST_CODE = "";
 	}
 
 	@Override
