@@ -117,7 +117,7 @@ public class PartnerUtils {
 	}
 
 	// 获取登录用户信息
-	public void getUser(final IPartnerObserver observer, User partner) {
+	public void getUser(final IPartnerObserver observer, final User partner) {
 		String url = UrlManagerUtils.getUserMsgUrl();
 		RequestParams params = new RequestParams();
 		params.put("user_id", partner.getId());
@@ -137,6 +137,8 @@ public class PartnerUtils {
 						String accountName = userJsonObj
 								.getString("account_name");
 						PartnerApp.USER.setAccountName(accountName);
+						PartnerApp.USER.setId(partner.getId());
+						PartnerApp.USER.setInvitationCode(partner.getInvitationCode());
 						String statJson = jsonObj.getString("stat");
 						if (!TextUtils.isEmpty(statJson)
 								&& !statJson.equals("null")) {
