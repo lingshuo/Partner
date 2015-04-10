@@ -44,16 +44,16 @@ public class PartnerDetailAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = LayoutInflater.from(mContext).inflate(
 					R.layout.listview_partner_item, null);
-			convertView = holder.nameTv = (TextView) convertView
-					.findViewById(R.id.name_tv);
 			holder.nameTv = (TextView) convertView.findViewById(R.id.name_tv);
 			holder.monthPeiziTv = (TextView) convertView
 					.findViewById(R.id.month_peizi_tv);
+			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		holder.nameTv.setText(mList.get(position).getAccountName());
-		holder.monthPeiziTv.setText(mList.get(position).getMonthlyIncome());
+		holder.monthPeiziTv.setText("本月配资:"
+				+ mList.get(position).getMonthlyIncome());
 		return convertView;
 	}
 

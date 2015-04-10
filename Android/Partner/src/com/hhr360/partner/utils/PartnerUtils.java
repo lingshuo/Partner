@@ -91,10 +91,10 @@ public class PartnerUtils {
 								.getString("firstly_partner_num"));
 						user.setSecondlyPartnerNum(partnerJsonObj
 								.getString("secondary_partner_num"));
-						user.setMonthlyIncome(Integer.parseInt(partnerJsonObj
-								.getString("monthly_stock_endowment"))
-								+ Integer.parseInt(partnerJsonObj
-										.getString("monthly_futures_endowment"))
+						user.setMonthlyIncome(partnerJsonObj
+								.getDouble("monthly_stock_endowment")
+								+ partnerJsonObj
+										.getDouble("monthly_futures_endowment")
 								+ "");
 						PartnerApp.PARTNER.mPartnerList.add(user);
 
@@ -138,7 +138,8 @@ public class PartnerUtils {
 								.getString("account_name");
 						PartnerApp.USER.setAccountName(accountName);
 						PartnerApp.USER.setId(partner.getId());
-						PartnerApp.USER.setInvitationCode(partner.getInvitationCode());
+						PartnerApp.USER.setInvitationCode(partner
+								.getInvitationCode());
 						String statJson = jsonObj.getString("stat");
 						if (!TextUtils.isEmpty(statJson)
 								&& !statJson.equals("null")) {
