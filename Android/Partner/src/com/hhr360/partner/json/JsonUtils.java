@@ -42,9 +42,9 @@ public class JsonUtils {
 				JSONObject statJonObj = new JSONObject(statJson);
 				PartnerApp.USER.setHhrLevel(statJonObj.getString("hhr_level"));
 				PartnerApp.USER.setFirstlyPartnerNum(statJonObj
-						.getString("firstly_partner_num"));
+						.getInt("firstly_partner_num"));
 				PartnerApp.USER.setSecondlyPartnerNum(statJonObj
-						.getString("secondary_partner_num"));
+						.getInt("secondary_partner_num"));
 				PartnerApp.USER.setExtendPartnerNum(statJonObj
 						.getString("extend_person_new"));
 				PartnerApp.USER.setInterestReturnCoefficient(statJonObj
@@ -117,9 +117,9 @@ public class JsonUtils {
 			user.setId(partnerJsonObj.getInt("id"));
 			user.setAccountName(partnerJsonObj.getString("account_name"));
 			user.setFirstlyPartnerNum(partnerJsonObj
-					.getString("firstly_partner_num"));
+					.getInt("firstly_partner_num"));
 			user.setSecondlyPartnerNum(partnerJsonObj
-					.getString("secondary_partner_num"));
+					.getInt("secondary_partner_num"));
 			user.setMonthlyIncome(partnerJsonObj
 					.getDouble("monthly_stock_endowment")
 					+ partnerJsonObj.getDouble("monthly_futures_endowment")

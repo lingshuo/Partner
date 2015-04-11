@@ -133,9 +133,8 @@ public class PartnerActivity extends Activity implements OnClickListener,
 	public void IPartnerObserver_success() {
 		mIdTextView.setText(PartnerApp.USER.getId() + "");
 		mAccountNameTextView.setText(PartnerApp.USER.getAccountName());
-		mTv4.setText(Integer.parseInt(PartnerApp.USER.getFirstlyPartnerNum())
-				+ Integer.parseInt(PartnerApp.USER.getSecondlyPartnerNum())
-				+ "");
+		mTv4.setText((PartnerApp.USER.getFirstlyPartnerNum() + PartnerApp.USER
+				.getSecondlyPartnerNum()) + "");
 		mTv5.setText(PartnerApp.USER.getInterestReturnCoefficient());
 		mTv6.setText(PartnerApp.USER.getChargeReturnCoefficient());
 		mTv7.setText("日增收益:" + PartnerApp.USER.getDailyIncome());

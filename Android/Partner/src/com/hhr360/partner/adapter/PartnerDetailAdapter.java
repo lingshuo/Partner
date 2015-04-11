@@ -59,9 +59,7 @@ public class PartnerDetailAdapter extends BaseAdapter {
 		holder.nameTv.setText(user.getAccountName());
 		holder.monthPeiziTv.setText("本月配资:" + user.getMonthlyIncome());
 		holder.partnerNumTv.setText("合伙人数:"
-				+ Integer.parseInt(PartnerApp.USER.getFirstlyPartnerNum())
-				+ Integer.parseInt(PartnerApp.USER.getSecondlyPartnerNum())
-				+ "");
+				+ (user.getFirstlyPartnerNum() + user.getSecondlyPartnerNum()));
 		return convertView;
 	}
 

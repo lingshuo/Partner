@@ -49,10 +49,9 @@ public class SubMyPartnerActivity extends BaseActivity implements
 
 		mUserIdTv.setText(PartnerApp.USER.getId() + "");
 		mUserNameTv.setText(PartnerApp.USER.getAccountName());
-		mPartnerNumTv.setText(Integer.parseInt(PartnerApp.USER
-				.getFirstlyPartnerNum())
-				+ Integer.parseInt(PartnerApp.USER.getSecondlyPartnerNum())
-				+ "");
+		mPartnerNumTv
+				.setText((PartnerApp.USER.getFirstlyPartnerNum() + PartnerApp.USER
+						.getSecondlyPartnerNum()) + "");
 		mMonthProfitTv.setText(PartnerApp.USER.getMonthlyIncome());
 		// mLevelUpTv.setText(PartnerApp.PARTNER.get);
 		// mRegistTimeTv.setText(PartnerApp.PARTNER.get)

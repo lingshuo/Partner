@@ -7,8 +7,8 @@ public class User {
 	private String invitationCode = "";
 	private String Phone = "";
 	private String hhrLevel = "";
-	private String firstlyPartnerNum = "0";
-	private String secondlyPartnerNum = "0";
+	private int firstlyPartnerNum = 0;
+	private int secondlyPartnerNum = 0;
 	private String extendPartnerNum = "";
 	private String interestReturnCoefficient = "";
 	private String chargeReturnCoefficient = "";
@@ -55,11 +55,11 @@ public class User {
 		this.hhrLevel = hhrLevel;
 	}
 
-	public String getFirstlyPartnerNum() {
+	public int getFirstlyPartnerNum() {
 		return firstlyPartnerNum;
 	}
 
-	public void setFirstlyPartnerNum(String firstlyPartnerNum) {
+	public void setFirstlyPartnerNum(int firstlyPartnerNum) {
 		this.firstlyPartnerNum = firstlyPartnerNum;
 	}
 
@@ -103,11 +103,11 @@ public class User {
 		this.monthlyIncome = monthlyIncome;
 	}
 
-	public String getSecondlyPartnerNum() {
+	public int getSecondlyPartnerNum() {
 		return secondlyPartnerNum;
 	}
 
-	public void setSecondlyPartnerNum(String secondlyPartnerNum) {
+	public void setSecondlyPartnerNum(int secondlyPartnerNum) {
 		this.secondlyPartnerNum = secondlyPartnerNum;
 	}
 

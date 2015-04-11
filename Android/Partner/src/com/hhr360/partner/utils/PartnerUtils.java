@@ -71,8 +71,10 @@ public class PartnerUtils {
 			@Override
 			public void onFailure(int code, Header[] head, byte[] result,
 					Throwable throwable) {
-				String errorMsg = new String(result);
-				observer.IPartnerObserver_failed(errorMsg);
+				if (result != null) {
+					String errorMsg = new String(result);
+					observer.IPartnerObserver_failed(errorMsg);
+				}
 			}
 		});
 
@@ -124,8 +126,10 @@ public class PartnerUtils {
 			@Override
 			public void onFailure(int code, Header[] head, byte[] result,
 					Throwable throwable) {
-				String errorMsg = new String(result);
-				observer.IPartnerObserver_failed(errorMsg);
+				if(result!=null){
+					String errorMsg = new String(result);
+					observer.IPartnerObserver_failed(errorMsg);
+				}
 			}
 		});
 	}

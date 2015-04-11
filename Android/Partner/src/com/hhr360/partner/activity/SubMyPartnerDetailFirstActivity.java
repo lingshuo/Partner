@@ -76,14 +76,12 @@ public class SubMyPartnerDetailFirstActivity extends BaseActivity {
 		mFirFutureCommTV = (TextView) headView
 				.findViewById(R.id.first_future_fanyong_tv);
 
-		mPartnersTV.setText(Integer.parseInt(PartnerApp.USER
-				.getFirstlyPartnerNum())
-				+ Integer.parseInt(PartnerApp.USER.getSecondlyPartnerNum())
-				+ "");
+		mPartnersTV.setText((PartnerApp.USER.getFirstlyPartnerNum() + PartnerApp.USER
+				.getSecondlyPartnerNum()) + "");
 		mFirPartnerTV1.setText(PartnerApp.USER.getFirstlyPartnerNum() + "人");
 		mSecPartnerTV1.setText(PartnerApp.USER.getSecondlyPartnerNum() + "人");
-		mFirPartnerTV2.setText(PartnerApp.USER.getFirstlyPartnerNum());
-		mSecPartnerTV2.setText(PartnerApp.USER.getSecondlyPartnerNum());
+		mFirPartnerTV2.setText(PartnerApp.USER.getFirstlyPartnerNum()+"");
+		mSecPartnerTV2.setText(PartnerApp.USER.getSecondlyPartnerNum()+"");
 
 		mSecStockEndowTV.setText(PartnerApp.PARTNER.getSecStockEndow() + "");
 		mSecStockCommTV.setText(PartnerApp.PARTNER.getSecStockComm() + "");
