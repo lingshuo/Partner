@@ -40,7 +40,12 @@ public class FindPasswordActivity extends BaseActivity implements
 		mSendBtn.setOnClickListener(this);
 		mButton = (Button) findViewById(R.id.next);
 		mButton.setOnClickListener(this);
-		setHeaderTextName(getResources().getString(R.string.forget_password));
+		if (mIsFromSettings) {
+			setHeaderTextName("修改密码");
+		} else {
+			setHeaderTextName(getResources()
+					.getString(R.string.forget_password));
+		}
 	}
 
 	@Override
