@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
-            android:text="对您贡献:213万" />
+            android:text="对您贡献:0万" />
 
         <TextView
             android:id="@+id/partner_num_tv"
@@ -37,7 +37,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:text="本月收益:1000" />
+            android:text="本月收益:0万" />
 
         <TextView
             android:id="@+id/month_peizi_tv"

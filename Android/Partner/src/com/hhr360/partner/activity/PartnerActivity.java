@@ -14,6 +14,7 @@ import com.hhr360.partner.PartnerApp;
 import com.hhr360.partner.R;
 import com.hhr360.partner.bean.User;
 import com.hhr360.partner.observer.IPartnerObserver;
+import com.hhr360.partner.utils.NetworkStateUtil;
 import com.hhr360.partner.utils.PartnerUtils;
 import com.hhr360.partner.utils.PreferenceUtils;
 
@@ -32,11 +33,6 @@ public class PartnerActivity extends Activity implements OnClickListener,
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		User user = new User();
-		user.setId(PreferenceUtils.getID());
-		user.setPhone(PreferenceUtils.getPhone());
-		user.setInvitationCode(PreferenceUtils.getInviteCode());
-		PartnerUtils.getInstance().getUser(this, user);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.partner);
 		mRelBtn[0] = (RelativeLayout) findViewById(R.id.rel01);
@@ -63,6 +59,12 @@ public class PartnerActivity extends Activity implements OnClickListener,
 		for (int i = 0; i < 12; i++) {
 			mRelBtn[i].setOnClickListener(this);
 		}
+		NetworkStateUtil.init(this);
+		User user = new User();
+		user.setId(PreferenceUtils.getID());
+		user.setPhone(PreferenceUtils.getPhone());
+		user.setInvitationCode(PreferenceUtils.getInviteCode());
+		PartnerUtils.getInstance().getUser(this, this, user);
 	}
 
 	@Override
@@ -144,5 +146,11 @@ public class PartnerActivity extends Activity implements OnClickListener,
 	@Override
 	public void IPartnerObserver_failed(String errorMsg) {
 
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		NetworkStateUtil.release(this);
 	}
 }

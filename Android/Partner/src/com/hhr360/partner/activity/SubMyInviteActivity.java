@@ -2,7 +2,6 @@ package com.hhr360.partner.activity;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -79,7 +78,8 @@ public class SubMyInviteActivity extends BaseActivity implements
 			break;
 		case R.id.myinvite_btn2:
 			sb.append(PartnerApp.USER.getAccountName());
-			sb.append("”邀请您配资，现在就配资请访问：https://www.kunzhoudade.com/812345678910");
+			sb.append("”邀请您配资，现在就配资请访问：https://www.kunzhoudade.com/");
+			sb.append(PartnerApp.USER.getInvitationCode());
 			sendSMS(sb.toString());
 			break;
 		}

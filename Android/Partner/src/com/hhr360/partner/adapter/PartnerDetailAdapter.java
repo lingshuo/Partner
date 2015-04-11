@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.hhr360.partner.PartnerApp;
 import com.hhr360.partner.R;
+import com.hhr360.partner.bean.Partner;
 import com.hhr360.partner.bean.User;
 
 public class PartnerDetailAdapter extends BaseAdapter {
@@ -47,13 +49,19 @@ public class PartnerDetailAdapter extends BaseAdapter {
 			holder.nameTv = (TextView) convertView.findViewById(R.id.name_tv);
 			holder.monthPeiziTv = (TextView) convertView
 					.findViewById(R.id.month_peizi_tv);
+			holder.partnerNumTv = (TextView) convertView
+					.findViewById(R.id.partner_num_tv);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.nameTv.setText(mList.get(position).getAccountName());
-		holder.monthPeiziTv.setText("本月配资:"
-				+ mList.get(position).getMonthlyIncome());
+		User user = mList.get(position);
+		holder.nameTv.setText(user.getAccountName());
+		holder.monthPeiziTv.setText("本月配资:" + user.getMonthlyIncome());
+		holder.partnerNumTv.setText("合伙人数:"
+				+ Integer.parseInt(PartnerApp.USER.getFirstlyPartnerNum())
+				+ Integer.parseInt(PartnerApp.USER.getSecondlyPartnerNum())
+				+ "");
 		return convertView;
 	}
 

@@ -136,9 +136,6 @@ public class LoginActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void ILoginObserver_succeed() {
-		// Toast.makeText(this,
-		// getResources().getString(R.string.login_success),
-		// Toast.LENGTH_SHORT).show();
 
 		// 存储登录状态
 		PreferenceUtils.setLoginStatus(true);

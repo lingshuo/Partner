@@ -40,8 +40,7 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
 			finish();
 			break;
 		case R.id.change_pwd_tv:
-			Intent intent = new Intent(this, ResetPasswordActivity.class);
-			intent.putExtra("phone", PreferenceUtils.getPhone());
+			Intent intent = new Intent(this, FindPasswordActivity.class);
 			intent.putExtra("isfromsettings", true);
 			startActivity(intent);
 			break;

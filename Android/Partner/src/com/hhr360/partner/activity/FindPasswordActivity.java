@@ -25,12 +25,15 @@ public class FindPasswordActivity extends BaseActivity implements
 	private EditText mSecurityEt;
 	private Button mSendBtn;
 	private Button mButton;
+	private boolean mIsFromSettings = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.find_password);
+		Intent intent = getIntent();
+		mIsFromSettings = intent.getBooleanExtra("isfromsettings", false);
 		mPhoneEt = (EditText) findViewById(R.id.findpassword_tel);
 		mSecurityEt = (EditText) findViewById(R.id.findpassword_security);
 		mSendBtn = (Button) findViewById(R.id.find_password);
@@ -88,12 +91,21 @@ public class FindPasswordActivity extends BaseActivity implements
 					&& PartnerApp.PHONE_CODE.equals(mSecurityEt.getText()
 							.toString())) {
 				Intent intent = new Intent(this, ResetPasswordActivity.class);
+				intent.putExtra("isfromsettings", mIsFromSettings);
 				intent.putExtra("phone", mPhoneEt.getText().toString());
-				startActivity(intent);
+				startActivityForResult(intent, 1024);
 			} else {
 				Toast.makeText(this, "短信验证码错误", Toast.LENGTH_SHORT).show();
 			}
 			break;
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == 1024 && resultCode == 1024) {
+			finish();
 		}
 	}
 

@@ -30,7 +30,6 @@ public class SubMyPartnerActivity extends BaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		PartnerUtils.getInstance().getPartner(this, PartnerApp.USER.getId());
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.sub_my_partner);
 		mUserIdTv = (TextView) findViewById(R.id.textView2);
@@ -60,6 +59,9 @@ public class SubMyPartnerActivity extends BaseActivity implements
 
 		// 设置head的文字
 		setHeaderTextName(getResources().getString(R.string.partner_my_partner));
+		PartnerUtils.getInstance().getPartner(this, this,
+				PartnerApp.USER.getId());
+
 	}
 
 	@Override

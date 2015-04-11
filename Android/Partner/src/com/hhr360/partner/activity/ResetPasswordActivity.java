@@ -32,12 +32,8 @@ public class ResetPasswordActivity extends BaseActivity implements
 		mIsFromSettings = intent.getBooleanExtra("isfromsettings", false);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.reset_password);
-		if (mIsFromSettings) {
-			setHeaderTextName("修改密码");
-		} else {
-			setHeaderTextName(getResources().getString(R.string.reset_password));
+		setHeaderTextName(getResources().getString(R.string.reset_password));
 
-		}
 		mPasswordEditText = (EditText) findViewById(R.id.regist_password);
 		mPasswordAgainEditText = (EditText) findViewById(R.id.regist_password_again);
 		mButton = (Button) findViewById(R.id.next);
@@ -48,6 +44,7 @@ public class ResetPasswordActivity extends BaseActivity implements
 	public void IResetPasswordObserver_onSuccess(String msg) {
 		if (mIsFromSettings) {
 			Toast.makeText(this, "密码修改成功", Toast.LENGTH_SHORT).show();
+			setResult(1024);
 			finish();
 			return;
 		}
